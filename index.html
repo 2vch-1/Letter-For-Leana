@@ -12,10 +12,11 @@
       padding: 0;
     }
 
+    /* خلفية سوداء منقطة ثابتة لجميع المراحل */
     body {
-      background-color: #e0f2fe;
-      background-image: radial-gradient(#bae6fd 2px, transparent 2px);
-      background-size: 25px 25px;
+      background-color: #121212;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.18) 1.5px, transparent 1.5px);
+      background-size: 24px 24px;
       font-family: 'Poppins', sans-serif;
       display: flex;
       justify-content: center;
@@ -24,21 +25,21 @@
       overflow: hidden;
     }
 
-    /* Envelope Card */
+    /* 1. كارت الظرف (أسود مع إضاءة) */
     .envelope-card {
-      background: #ffffff;
-      border: 4px solid #0ea5e9;
+      background: #181818;
+      border: 3px solid #ffffff;
       border-radius: 20px;
       padding: 40px 50px;
       text-align: center;
-      box-shadow: 0 10px 25px rgba(14, 165, 233, 0.25);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
       cursor: pointer;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .envelope-card:hover {
       transform: scale(1.05);
-      box-shadow: 0 15px 30px rgba(14, 165, 233, 0.35);
+      box-shadow: 0 0 35px rgba(255, 255, 255, 0.25);
     }
 
     .envelope-icon {
@@ -49,37 +50,45 @@
     .envelope-card h1 {
       font-family: 'Press Start 2P', cursive;
       font-size: 16px;
-      color: #0ea5e9;
+      color: #ffffff;
     }
 
-    /* Window Popup */
+    /* النافذة المنبثقة العامة */
     .window {
       display: none;
       width: 90%;
-      max-width: 440px;
-      background: #f0f9ff;
-      border: 4px solid #0ea5e9;
-      border-radius: 12px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+      max-width: 450px;
+      background: #ffffff;
+      border-radius: 16px;
       position: relative;
+      transition: all 0.3s ease;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
     }
 
     .window-header {
-      background: #0ea5e9;
       color: white;
-      padding: 10px 15px;
+      padding: 12px 18px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-family: 'Press Start 2P', cursive;
-      font-size: 12px;
-      border-top-left-radius: 6px;
-      border-top-right-radius: 6px;
+      font-size: 13px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
     }
 
     .window-body {
-      padding: 30px 20px;
+      padding: 25px 20px;
       text-align: center;
+    }
+
+    /* 2. ثيم السؤال (Gray) */
+    .window.theme-gray {
+      border: 4px solid #6b7280;
+    }
+
+    .window.theme-gray .window-header {
+      background: #6b7280;
     }
 
     .pixel-cat {
@@ -90,11 +99,10 @@
     .question {
       font-family: 'Press Start 2P', cursive;
       font-size: 14px;
-      color: #0369a1;
+      color: #374151;
       margin-bottom: 30px;
     }
 
-    /* Buttons Area */
     .buttons-area {
       display: flex;
       justify-content: center;
@@ -107,59 +115,97 @@
       font-family: 'Press Start 2P', cursive;
       font-size: 12px;
       padding: 12px 24px;
-      border: 3px solid #0ea5e9;
+      border: 3px solid #6b7280;
       border-radius: 8px;
       cursor: pointer;
       background: #fff;
-      color: #0ea5e9;
+      color: #6b7280;
       transition: background 0.2s, color 0.2s;
     }
 
     .btn-yes:hover {
-      background: #0ea5e9;
+      background: #6b7280;
       color: #fff;
     }
 
-    /* Letter Display Area */
+    /* 3. ثيم الرسالة والصور (Orange) */
+    .window.theme-orange {
+      border: 4px solid #ff6b00;
+    }
+
+    .window.theme-orange .window-header {
+      background: #ff6b00;
+    }
+
     .letter-area {
       display: none;
     }
 
     .yippee {
       font-family: 'Press Start 2P', cursive;
-      color: #0ea5e9;
+      color: #ff6b00;
       font-size: 16px;
-      margin-bottom: 15px;
+      margin-bottom: 18px;
     }
 
     .letter-content {
       text-align: left;
-      max-height: 280px;
+      max-height: 360px;
       overflow-y: auto;
       padding: 20px;
       background: #fff;
-      border: 2px dashed #38bdf8;
-      border-radius: 10px;
-      color: #0c4a6e;
+      border: 2px dashed #ff9e59;
+      border-radius: 12px;
+      color: #262626;
       font-size: 15px;
       line-height: 1.8;
       direction: ltr;
+    }
+
+    .letter-content::-webkit-scrollbar {
+      width: 10px;
+    }
+    .letter-content::-webkit-scrollbar-track {
+      background: #fff1e6;
+      border-radius: 10px;
+    }
+    .letter-content::-webkit-scrollbar-thumb {
+      background: #ff6b00;
+      border-radius: 10px;
+    }
+
+    .letter-images {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .letter-images img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      border-radius: 14px;
+      border: 3px solid #ff6b00;
+      box-shadow: 0 4px 12px rgba(255, 107, 0, 0.2);
     }
   </style>
 </head>
 <body>
 
+  <!-- مرحلة الظرف -->
   <div class="envelope-card" id="envelope" onclick="openLetter()">
     <div class="envelope-icon">✉️</div>
     <h1>♡ Letter For Leana!! ♡</h1>
   </div>
 
-  <div class="window" id="window">
+  <!-- النافذة المنبثقة -->
+  <div class="window theme-gray" id="window">
     <div class="window-header">
       <span>LOVE</span>
       <span>─ ❐ ✕</span>
     </div>
     
+    <!-- مرحلة السؤال (Gray) -->
     <div class="window-body" id="questionArea">
       <div class="pixel-cat">🤔💘</div>
       <div class="question">Do you love me?</div>
@@ -170,12 +216,17 @@
       </div>
     </div>
 
+    <!-- مرحلة الرسالة والصور (Orange) -->
     <div class="window-body letter-area" id="letterArea">
       <div class="yippee">Yippeee!! 🎉</div>
       <div class="letter-content">
-        <p>I just wanted to let you know how sweet and special you are to me! No matter how tough days get, having you around always brings so much joy and peace. ♡</p>
+        <p>I just wanted to tell you that you are the best person i have ever met and i wanted to let you know how sweet and special you are for me, even when we stopped talking i never stopped thinking about you and when you talked to me about your old friends i got pretty mad because you do not deserve being treated like that, im always here for you and i promise i wont hurt you or break your heart by any chance and i love you so much. ♡</p>
         <br>
         <p>Thank you for always being here and making every single moment brighter!</p>
+        
+        <div class="letter-images">
+          <img src="IMG_20240201_143022_397.jpg" alt="Our Memory">
+        </div>
       </div>
     </div>
   </div>
@@ -203,6 +254,9 @@
     function sayYes() {
       document.getElementById('questionArea').style.display = 'none';
       document.getElementById('letterArea').style.display = 'block';
+      
+      const win = document.getElementById('window');
+      win.className = 'window theme-orange';
     }
   </script>
 </body>
